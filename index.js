@@ -20,9 +20,15 @@
     };
 
     // Static methods can be added directly to _
-    _.staticMethod = function() {
-        // ... implementation ...
-    };=
+    _.ready = function(callback) {
+        // Check if the DOMContentLoaded has already fired
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", callback);
+        } else {  // If it has already loaded, run the callback immediately
+            callback();
+        }
+    };
+
 
   
     if(!global._) {
